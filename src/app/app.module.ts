@@ -4,11 +4,13 @@ import { RouterModule } from '@angular/router'
 
 import { AppComponent } from './app.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
