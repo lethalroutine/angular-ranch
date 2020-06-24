@@ -1,1 +1,17 @@
-<p>main-menu works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav">
+      <li *ngFor="let item of menuItems" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" >{{item.name}}</a>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <a class="btn btn-primary">
+      Log in
+    </a>
+    <a class="btn btn-secondary ml-2">
+      Sign up
+    </a>
+  </div>
+</nav>

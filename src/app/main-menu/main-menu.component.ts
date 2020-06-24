@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-menu.component.css']
 })
 export class MainMenuComponent implements OnInit {
+  menuItems: MenuItem[] = [
+    {name: 'Info', link: 'info'},
+    {name: 'Map', link: 'map'},
+  ];
+
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
+}
 
+interface MenuItem {
+  name: string;
+  link: string;
 }
