@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MapComponent } from './map/map.component';
-import {LogInComponent} from './log-in/log-in.component';
+import { LogInComponent } from './log-in/log-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 const routes: Routes = [
@@ -11,7 +12,7 @@ const routes: Routes = [
   {path: 'info', component: LandingPageComponent},
   {path: 'map', component: MapComponent},
   {path: 'log-in', component: LogInComponent},
-  // {path: 'sign-up'},
+  {path: 'sign-up', component: SignUpComponent},
 ];
 
 @NgModule({

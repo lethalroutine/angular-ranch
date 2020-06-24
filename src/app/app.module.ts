@@ -8,6 +8,7 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MapComponent } from './map/map.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { LogInComponent } from './log-in/log-in.component';
     MainMenuComponent,
     LandingPageComponent,
     MapComponent,
-    LogInComponent
+    LogInComponent,
+    SignUpComponent
   ],
   imports: [
     AppRoutingModule,
