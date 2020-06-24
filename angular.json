@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "scalework"
+    }
+  },
+  "defaultProject": "scalework",
+  "cli": {
+    "analytics": false
+  }
 }
