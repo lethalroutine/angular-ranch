@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { AuthorizationService } from '../_services/authorization.service';
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -10,7 +12,10 @@ import { Router } from '@angular/router';
 export class SignUpComponent implements OnInit {
   user: RegistrationUser = {email: null, password: null, retypedPassword: null};
   submitted = false;
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private authorizationService: AuthorizationService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +28,12 @@ export class SignUpComponent implements OnInit {
       return;
     }
     form.reset();
+    this.markAsRegistered();
     this.router.navigate(['log-in']);
+  }
+
+  private markAsRegistered() {
+    this.authorizationService.registerUser();
   }
 }
 

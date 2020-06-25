@@ -7,11 +7,14 @@
     </ul>
   </div>
   <div>
-    <a class="btn btn-primary" [routerLink]="'log-in'">
+    <a *ngIf="!isUserLogged" class="btn btn-primary" [routerLink]="'log-in'">
       Log in
     </a>
-    <a class="btn btn-secondary ml-2" [routerLink]="'sign-up'">
+    <a *ngIf="!isUserRegistered && !isUserLogged" class="btn btn-secondary ml-2" [routerLink]="'sign-up'">
       Sign up
+    </a>
+    <a *ngIf="isUserLogged" class="btn btn-secondary ml-2" (click)="onLogOut()">
+      Log Out
     </a>
   </div>
 </nav>

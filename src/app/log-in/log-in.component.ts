@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { AuthorizationService } from '../_services/authorization.service';
+
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
@@ -10,7 +12,10 @@ import { Router } from '@angular/router';
 export class LogInComponent implements OnInit {
   user: User = {email: null, password: null};
   submitted = false;
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private authorizationService: AuthorizationService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -20,7 +25,12 @@ export class LogInComponent implements OnInit {
     this.submitted = true;
     console.log(`submitted ${user.email}`);
     form.reset();
+    this.markAsLoggedIn();
     this.router.navigate(['map']);
+  }
+
+  private markAsLoggedIn() {
+    this.authorizationService.logInUser();
   }
 }
 
