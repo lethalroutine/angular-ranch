@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AccountService } from '../_services/account.service';
+import { UserRegister } from '../_interfaces/user-register';
 
 @Component({
   selector: 'app-sign-up',
@@ -23,17 +24,26 @@ export class SignUpComponent implements OnInit {
   onSubmit(form: NgForm) {
     const user = form.value as RegistrationUser;
     this.submitted = true;
-    console.log(`submitted ${user.email}`);
-    if (user.password !== user.retypedPassword) {
+    const passwordsMatch = user.password !== user.retypedPassword
+    if (!passwordsMatch) {
+      window.alert('passwords are different');
       return;
     }
-    form.reset();
-    this.markAsRegistered();
-    this.router.navigate(['log-in']);
+    const isSuccessfullyRegistered  = this.handleUserRegister({email: user.email, password: user.password});
+    if (isSuccessfullyRegistered) {
+      this.handleSuccessfulUserRegistration(form);
+    }
   }
 
-  private markAsRegistered() {
-    this.accountService.registerUser();
+  private handleSuccessfulUserRegistration(form: NgForm) {
+    this.accountService.isUserRegistered.next(true);
+    this.router.navigate(['log-in']);
+    form.reset();
+    window.alert('User successfully registered');
+  }
+
+  private handleUserRegister(data: UserRegister): boolean {
+    return this.accountService.registerUser(data);
   }
 }
 
