@@ -11,7 +11,6 @@ import { AccountService } from '../_services/account.service';
 })
 export class LogInComponent implements OnInit {
   user: User = {email: null, password: null};
-  submitted = false;
   constructor(
     private router: Router,
     private accountService: AccountService
@@ -22,15 +21,11 @@ export class LogInComponent implements OnInit {
 
   onSubmit(form: NgForm): void {
     const user = form.value as User;
-    this.submitted = true;
-    console.log(`submitted ${user.email}`);
-    form.reset();
-    this.markAsLoggedIn();
-    this.router.navigate(['map']);
+    this.logIn(user);
   }
 
-  private markAsLoggedIn() {
-    this.accountService.logInUser();
+  private logIn(data: User): void {
+    this.accountService.logInUser(data);
   }
 }
 
