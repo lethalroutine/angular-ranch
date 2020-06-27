@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthorizationService } from '../_services/authorization.service';
+import { AccountService } from '../_services/account.service';
 
 @Component({
   selector: 'app-main-menu',
@@ -17,7 +17,7 @@ export class MainMenuComponent implements OnInit {
   private hasUserLoggedOut = false;
 
 
-  constructor(private authorizationService: AuthorizationService) { }
+  constructor(private accountService: AccountService) { }
 
   ngOnInit() {
     this.subscribeForUserRegister();
@@ -28,25 +28,25 @@ export class MainMenuComponent implements OnInit {
   }
 
   private subscribeForUserRegister() {
-    this.authorizationService.isUserRegistered.subscribe(isRegistered => {
+    this.accountService.isUserRegistered.subscribe(isRegistered => {
       this.isUserRegistered = isRegistered;
     });
   }
 
   private subscribeForUserLogIn() {
-    this.authorizationService.isUserAuthenticated.subscribe(isLogged => {
+    this.accountService.isUserAuthenticated.subscribe(isLogged => {
       this.isUserLogged = isLogged;
     });
   }
 
   private subscribeForUserLogOut() {
-    this.authorizationService.hasUserLoggedOut.subscribe(hasLoggedOut => {
+    this.accountService.hasUserLoggedOut.subscribe(hasLoggedOut => {
       this.hasUserLoggedOut = hasLoggedOut;
     });
   }
 
   private onLogOut() {
-    this.authorizationService.logOutUser();
+    this.accountService.logOutUser();
   }
 }
 

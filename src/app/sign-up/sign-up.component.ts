@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AuthorizationService } from '../_services/authorization.service';
+import { AccountService } from '../_services/account.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,7 +14,7 @@ export class SignUpComponent implements OnInit {
   submitted = false;
   constructor(
     private router: Router,
-    private authorizationService: AuthorizationService
+    private accountService: AccountService
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +33,7 @@ export class SignUpComponent implements OnInit {
   }
 
   private markAsRegistered() {
-    this.authorizationService.registerUser();
+    this.accountService.registerUser();
   }
 }
 

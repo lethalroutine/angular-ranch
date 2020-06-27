@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AuthorizationService } from '../_services/authorization.service';
+import { AccountService } from '../_services/account.service';
 
 @Component({
   selector: 'app-log-in',
@@ -14,7 +14,7 @@ export class LogInComponent implements OnInit {
   submitted = false;
   constructor(
     private router: Router,
-    private authorizationService: AuthorizationService
+    private accountService: AccountService
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +30,7 @@ export class LogInComponent implements OnInit {
   }
 
   private markAsLoggedIn() {
-    this.authorizationService.logInUser();
+    this.accountService.logInUser();
   }
 }
 

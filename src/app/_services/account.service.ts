@@ -6,7 +6,7 @@ import {BehaviorSubject} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthorizationService {
+export class AccountService {
   isUserAuthenticated = new BehaviorSubject<boolean>(false);
   isUserRegistered = new BehaviorSubject<boolean>(false);
   hasUserLoggedOut = new BehaviorSubject<boolean>(false);
