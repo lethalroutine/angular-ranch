@@ -41,7 +41,7 @@ export class MainMenuComponent implements OnInit {
     });
   }
 
-  private onLogOut() {
+  onLogOut() {
     this.accountService.logOutUser();
   }
 }

@@ -24,26 +24,16 @@ export class SignUpComponent implements OnInit {
   onSubmit(form: NgForm) {
     const user = form.value as RegistrationUser;
     this.submitted = true;
-    const passwordsMatch = user.password !== user.retypedPassword
+    const passwordsMatch = user.password === user.retypedPassword
     if (!passwordsMatch) {
       window.alert('passwords are different');
       return;
     }
-    const isSuccessfullyRegistered  = this.handleUserRegister({email: user.email, password: user.password});
-    if (isSuccessfullyRegistered) {
-      this.handleSuccessfulUserRegistration(form);
-    }
+    this.handleUserRegister({email: user.email, password: user.password});
   }
 
-  private handleSuccessfulUserRegistration(form: NgForm) {
-    this.accountService.isUserRegistered.next(true);
-    this.router.navigate(['log-in']);
-    form.reset();
-    window.alert('User successfully registered');
-  }
-
-  private handleUserRegister(data: UserRegister): boolean {
-    return this.accountService.registerUser(data);
+  private handleUserRegister(data: UserRegister) {
+    this.accountService.registerUser(data);
   }
 }
 

@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { BehaviorSubject } from 'rxjs';
-import { AuthenticationService } from './authentication.service';
+import {BehaviorSubject} from 'rxjs';
+import {AuthenticationService} from './authentication.service';
 
-import { UserRegister } from '../_interfaces/user-register';
-import { UserLogIn } from '../_interfaces/user-log-in';
+import {UserRegister} from '../_interfaces/user-register';
+import {UserLogIn} from '../_interfaces/user-log-in';
 
 @Injectable({
   providedIn: 'root'
@@ -21,27 +21,25 @@ export class AccountService {
     private authenticationService: AuthenticationService) {
   }
 
-  registerUser(data: UserRegister): boolean {
-    let isValid = false;
+  registerUser(data: UserRegister) {
     this.authenticationService.registerUserWithProvidedData(data).subscribe((response) => {
-      isValid = true;
+      this.isUserRegistered.next(true);
+      window.alert('User successfully registered');
+      this.router.navigate(['log-in']);
     }, (error => {
       window.alert('Email already exists');
       console.log(error);
-      isValid = false;
     }));
-    return isValid;
   }
 
   logInUser(data: UserLogIn): void {
     this.authenticationService.authenticateUserWithProvidedData(data)
-      .subscribe((response: JwtResponse) =>
-      {
-        this.jwtToken = response.jwt;
-        console.log('Retrieved token:', this.jwtToken);
-        this.router.navigate(['map']);
-        this.isUserAuthenticated.next(true);
-      },
+      .subscribe((response: JwtResponse) => {
+          this.jwtToken = response.jwt;
+          console.log('Retrieved token:', this.jwtToken);
+          this.router.navigate(['map']);
+          this.isUserAuthenticated.next(true);
+        },
         (() => {
           window.alert('Failed to log in');
         })
