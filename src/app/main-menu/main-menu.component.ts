@@ -8,10 +8,6 @@ import { AccountService } from '../_services/account.service';
   styleUrls: ['./main-menu.component.css']
 })
 export class MainMenuComponent implements OnInit {
-  menuItems: MenuItem[] = [
-    {name: 'Info', link: 'info'},
-    {name: 'Map', link: 'map'},
-  ];
   private isUserRegistered = false;
   private isUserLogged = false;
   private hasUserLoggedOut = false;
@@ -48,9 +44,4 @@ export class MainMenuComponent implements OnInit {
   private onLogOut() {
     this.accountService.logOutUser();
   }
-}
-
-interface MenuItem {
-  name: string;
-  link: string;
 }

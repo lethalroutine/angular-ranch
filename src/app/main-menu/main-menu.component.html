@@ -1,8 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav">
-      <li *ngFor="let item of menuItems" class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="item.link">{{item.name}}</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="info">Info</a>
+      </li>
+      <li *ngIf="this.isUserLogged" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="map">Map</a>
       </li>
     </ul>
   </div>
