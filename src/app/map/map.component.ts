@@ -1,6 +1,8 @@
 import {AfterViewInit, Component} from '@angular/core';
 
 import * as L from 'leaflet';
+import {DataProviderService} from '../_services/data-provider.service';
+import {AccountService} from '../_services/account.service';
 
 @Component({
   selector: 'app-map',
@@ -9,8 +11,15 @@ import * as L from 'leaflet';
 })
 export class MapComponent implements AfterViewInit {
   private map;
+  private isUserLoggedIn = false;
 
-  constructor() { }
+  constructor(
+    private dataService: DataProviderService,
+    private accountService: AccountService
+    ) {
+    this.accountService.isUserAuthenticated.subscribe((value) =>
+    this.isUserLoggedIn = value);
+  }
 
   ngAfterViewInit(): void {
     this.initMap();
@@ -28,5 +37,12 @@ export class MapComponent implements AfterViewInit {
     });
 
     tiles.addTo(this.map);
+  }
+
+  onClick(id: number) {
+    this.dataService.fetchDataFromServer(id).subscribe((data) =>
+    {
+      console.log(data);
+    });
   }
 }
