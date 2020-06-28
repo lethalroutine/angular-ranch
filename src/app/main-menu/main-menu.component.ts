@@ -8,9 +8,9 @@ import { AccountService } from '../_services/account.service';
   styleUrls: ['./main-menu.component.css']
 })
 export class MainMenuComponent implements OnInit {
-  private isUserRegistered = false;
-  private isUserLogged = false;
-  private hasUserLoggedOut = false;
+  isUserRegistered = false;
+  isUserLogged = false;
+  hasUserLoggedOut = false;
 
 
   constructor(private accountService: AccountService) { }

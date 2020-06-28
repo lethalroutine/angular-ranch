@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements AfterViewInit {
-  private map;
-  private isUserLoggedIn = false;
+  map;
+  isUserLoggedIn = false;
 
   constructor(
     private dataService: DataProviderService,
