@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="info">Info</a>
+      </li>
+      <li *ngIf="this.isUserLogged" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="map">Map</a>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <a *ngIf="!isUserLogged" class="btn btn-primary" [routerLink]="'log-in'">
+      Log in
+    </a>
+    <a *ngIf="!isUserRegistered && !isUserLogged" class="btn btn-secondary ml-2" [routerLink]="'sign-up'">
+      Sign up
+    </a>
+    <a *ngIf="isUserLogged" class="btn btn-secondary ml-2" (click)="onLogOut()">
+      Log Out
+    </a>
+  </div>
+</nav>

@@ -1,14 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MainMenuComponent } from './main-menu/main-menu.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { MapComponent } from './map/map.component';
+import { LogInComponent } from './log-in/log-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainMenuComponent,
+    LandingPageComponent,
+    MapComponent,
+    LogInComponent,
+    SignUpComponent
   ],
   imports: [
-    BrowserModule
+    AppRoutingModule,
+    BrowserModule,
+    RouterModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

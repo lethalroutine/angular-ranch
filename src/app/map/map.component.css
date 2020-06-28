@@ -1,0 +1,42 @@
+.grid {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 20% 20% 20% 40%;
+  margin: 20px;
+  grid-row-gap: 5px;
+}
+
+.button1 {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+
+.button2 {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+
+.button3 {
+  grid-column: 2/3;
+  grid-row: 3/4;
+}
+
+.map-container {
+  grid-column: 1/2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 80px 200px 10px 80px;
+  max-width: 70vw;
+}
+
+.map-frame {
+  border: 2px solid black;
+  height: 100%;
+}
+
+#map {
+  height: 100%;
+}
